@@ -12,10 +12,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = [
-    # Auto-detect monitor configuration and set appropriate workspaces
-    'exec-and-forget ~/.config/aerospace/monitor-setup.sh'
-]
+after-startup-command = []
 
 # Start AeroSpace at login
 start-at-login = true
@@ -41,40 +38,27 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 key-mapping.preset = 'qwerty'
 
-# Enhanced mouse behavior for multi-monitor setup
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
-# Using per-monitor configurations for different display types
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 10
 inner.vertical =   10
-outer.left =       [{ monitor.main = 10 }, { monitor.external = 15 }, 10]
-outer.bottom =     [{ monitor.main = 10 }, { monitor.external = 15 }, 10]
-outer.top =        [{ monitor.main = 10 }, { monitor.external = 15 }, 10]
-outer.right =      [{ monitor.main = 10 }, { monitor.external = 15 }, 10]
-
-# Per-monitor workspace assignments
-# This configures which workspaces appear on which monitors by default
-[workspace-to-monitor-force-assignment]
-1 = 'external'    # Workspace 1 on external monitor
-2 = 'external'    # Workspace 2 on external monitor
-3 = 'external'    # Workspace 3 on external monitor
-4 = 'external'    # Workspace 4 on external monitor
-5 = 'external'    # Workspace 5 on external monitor
-6 = 'external'    # Workspace 6 on external monitor
-7 = 'main'        # Workspace 7 on main display
-8 = 'main'        # Workspace 8 on main display
-9 = 'main'        # Workspace 9 on main display
-10 = 'main'       # Workspace 10 on main display
-S = 'main'        # Spotify workspace on main display
-
-# Display layouts - optimized per monitor type
-# Monitor-specific settings can be configured here
-# Note: monitor-layout is not currently supported in AeroSpace
+outer.left =       10
+outer.bottom =     10
+outer.top =        10
+outer.right =      10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -119,19 +103,8 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
-# Monitor navigation shortcuts
-alt-ctrl-h = 'focus-monitor left --wrap-around'
-alt-ctrl-l = 'focus-monitor right --wrap-around'
-alt-ctrl-j = 'focus-monitor down --wrap-around'
-alt-ctrl-k = 'focus-monitor up --wrap-around'
 
-# Move window to another monitor
-alt-ctrl-shift-h = 'move-node-to-monitor left --wrap-around'
-alt-ctrl-shift-l = 'move-node-to-monitor right --wrap-around'
-alt-ctrl-shift-j = 'move-node-to-monitor down --wrap-around'
-alt-ctrl-shift-k = 'move-node-to-monitor up --wrap-around'
-
-# Quick workspace access
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -141,8 +114,6 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-0 = 'workspace 10'
-alt-s = 'workspace S'  # Spotify workspace
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -154,8 +125,6 @@ alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
 alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
 alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
-alt-shift-s = ['move-node-to-workspace S', 'workspace S']
 
 alt-shift-f = 'fullscreen'
 
@@ -168,9 +137,6 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-semicolon = 'mode service'
 
 alt-shift-r = 'mode resize'
-
-# Quick swap monitors (useful for reconfiguring workspaces after monitor hotplug)
-alt-m = 'mode monitor'
 
 [mode.resize.binding]
 h = 'resize width -50'
@@ -185,22 +151,6 @@ equal = 'resize smart +50'
 
 enter = 'mode main'
 esc = 'mode main'
-
-# New monitor mode for handling monitor-specific actions
-[mode.monitor.binding]
-# Swap focused workspace to specific monitor
-m = ['move-workspace-to-monitor main', 'mode main']
-l = ['move-workspace-to-monitor external-left', 'mode main']
-r = ['move-workspace-to-monitor external-right', 'mode main']
-# Reconfigure monitors
-c = ['exec-and-forget ~/.config/aerospace/monitor-setup.sh', 'mode main']
-# Save current monitor layout
-s = ['exec-and-forget ~/.config/aerospace/save-monitor-layout.sh', 'mode main']
-# Apply saved monitor layout
-a = ['exec-and-forget ~/.config/aerospace/apply-monitor-layout.sh', 'mode main']
-# Exit monitor mode
-esc = 'mode main'
-enter = 'mode main'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -218,4 +168,4 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = "move-node-to-workspace S"
+run = "move-node-to-workspace S"º

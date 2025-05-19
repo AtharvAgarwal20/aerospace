@@ -35,14 +35,13 @@ elif [ "$monitor_count" -eq 2 ]; then
     # Assuming external monitor is to the right of main
     aerospace set-monitor-label right external
     
-    # Per your request:
-    # Workspaces 1-6 go to external monitor
-    for i in {1..6}; do
+    # Workspaces 1-5 go to external monitor
+    for i in {1..5}; do
         aerospace move-workspace-to-monitor $i external
     done
     
-    # Workspaces 7-10 and S go to main monitor
-    for i in {7..10}; do
+    # Workspaces 6-10 and S go to main monitor
+    for i in {6..10}; do
         aerospace move-workspace-to-monitor $i main
     done
     aerospace move-workspace-to-monitor S main
@@ -51,9 +50,9 @@ elif [ "$monitor_count" -eq 2 ]; then
     aerospace focus-monitor right --wrap-around
     aerospace workspace 1
     
-    # Then focus back to workspace 7 on main monitor
+    # Then focus back to workspace 6 on main monitor
     aerospace focus-monitor left --wrap-around
-    aerospace workspace 7
+    aerospace workspace 6
     
 elif [ "$monitor_count" -ge 3 ]; then
     # Triple monitor setup or more - for simplicity, we'll use only two monitors
@@ -67,14 +66,13 @@ elif [ "$monitor_count" -ge 3 ]; then
     # You may need to adjust this based on your physical setup
     aerospace set-monitor-label right external
     
-    # Per your request:
-    # Workspaces 1-6 go to external monitor
-    for i in {1..6}; do
+    # Workspaces 1-5 go to external monitor
+    for i in {1..5}; do
         aerospace move-workspace-to-monitor $i external
     done
     
-    # Workspaces 7-10 and S go to main monitor
-    for i in {7..10}; do
+    # Workspaces 6-10 and S go to main monitor
+    for i in {6..10}; do
         aerospace move-workspace-to-monitor $i main
     done
     aerospace move-workspace-to-monitor S main
@@ -83,9 +81,9 @@ elif [ "$monitor_count" -ge 3 ]; then
     aerospace focus-monitor right --wrap-around
     aerospace workspace 1
     
-    # Then focus back to workspace 7 on main monitor
+    # Then focus back to workspace 6 on main monitor
     aerospace focus-monitor left --wrap-around
-    aerospace workspace 7
+    aerospace workspace 6
 fi
 
 # IMPORTANT: Commenting out the re-applying of saved layouts
