@@ -171,6 +171,7 @@ if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace S"
 
 [workspace-to-monitor-force-assignment]
+S = "secondary"
 7 = "secondary"
 8 = "secondary"
 9 = "secondary"
