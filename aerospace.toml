@@ -136,7 +136,7 @@ alt-shift-s = ['move-node-to-workspace S', 'workspace S']
 alt-shift-w = ['move-node-to-workspace W', 'workspace W']
 alt-shift-b = ['move-node-to-workspace B', 'workspace B']
 alt-shift-d = ['move-node-to-workspace D', 'workspace D']
-alt-shift-d = ['move-node-to-workspace Z', 'workspace Z']
+alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
 
 alt-shift-f = 'fullscreen'
 
