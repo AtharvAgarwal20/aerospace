@@ -192,6 +192,7 @@ run = "move-node-to-workspace Z"
 
 [workspace-to-monitor-force-assignment]
 S = "secondary"
+Z = "secondary"
 8 = "secondary"
 9 = "secondary"
 10 = "secondary"
