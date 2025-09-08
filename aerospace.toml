@@ -119,6 +119,7 @@ alt-s = 'workspace S'
 alt-w = 'workspace W'
 alt-b = 'workspace B'
 alt-d = 'workspace D'
+alt-z = 'workspace Z'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -135,6 +136,7 @@ alt-shift-s = ['move-node-to-workspace S', 'workspace S']
 alt-shift-w = ['move-node-to-workspace W', 'workspace W']
 alt-shift-b = ['move-node-to-workspace B', 'workspace B']
 alt-shift-d = ['move-node-to-workspace D', 'workspace D']
+alt-shift-d = ['move-node-to-workspace Z', 'workspace Z']
 
 alt-shift-f = 'fullscreen'
 
@@ -183,6 +185,10 @@ run = "move-node-to-workspace S"
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
 run = "move-node-to-workspace W"
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = "move-node-to-workspace Z"
 
 [workspace-to-monitor-force-assignment]
 S = "secondary"
