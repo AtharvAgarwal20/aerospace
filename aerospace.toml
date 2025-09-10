@@ -120,6 +120,7 @@ alt-w = 'workspace W'
 alt-b = 'workspace B'
 alt-d = 'workspace D'
 alt-z = 'workspace Z'
+alt-u = 'workspace U'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -137,6 +138,7 @@ alt-shift-w = ['move-node-to-workspace W', 'workspace W']
 alt-shift-b = ['move-node-to-workspace B', 'workspace B']
 alt-shift-d = ['move-node-to-workspace D', 'workspace D']
 alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
+alt-shift-u = ['move-node-to-workspace U', 'workspace U']
 
 alt-shift-f = 'fullscreen'
 
@@ -189,6 +191,14 @@ run = "move-node-to-workspace W"
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = "move-node-to-workspace Z"
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = "move-node-to-workspace D"
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop.dua'
+run = "move-node-to-workspace U"
 
 [workspace-to-monitor-force-assignment]
 S = "secondary"
