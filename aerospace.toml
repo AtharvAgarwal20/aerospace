@@ -121,6 +121,7 @@ alt-b = 'workspace B'
 alt-d = 'workspace D'
 alt-z = 'workspace Z'
 alt-u = 'workspace U'
+alt-n = 'workspace N'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -139,6 +140,7 @@ alt-shift-b = ['move-node-to-workspace B', 'workspace B']
 alt-shift-d = ['move-node-to-workspace D', 'workspace D']
 alt-shift-z = ['move-node-to-workspace Z', 'workspace Z']
 alt-shift-u = ['move-node-to-workspace U', 'workspace U']
+alt-shift-n = ['move-node-to-workspace N', 'workspace N']
 
 alt-shift-f = 'fullscreen'
 
@@ -199,6 +201,10 @@ run = "move-node-to-workspace D"
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop.dua'
 run = "move-node-to-workspace U"
+
+[[on-window-detected]]
+if.app-id = 'com.NeatDownloadManager'
+run = "move-node-to-workspace N"
 
 [workspace-to-monitor-force-assignment]
 S = "secondary"
