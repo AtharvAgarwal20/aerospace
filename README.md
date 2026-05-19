@@ -235,6 +235,7 @@ The config defines **three modes**. You always start in `main`.
 | `alt + U` | **U** | Figma |
 | `alt + N` | **N** | Neat Download Manager |
 | `alt + P` | **P** | Brave Browser |
+| `alt + X` | **X** | Docker / WisprFlow |
 
 #### Quick Switching
 
@@ -252,7 +253,7 @@ Add **shift** to the workspace keybind — the window moves and you follow it:
 |---|---|
 | `alt + shift + 1` … `alt + shift + 9` | Move window to workspace **1–9** and switch |
 | `alt + shift + 0` | Move window to workspace **10** and switch |
-| `alt + shift + S/W/B/D/Z/U/N/P` | Move window to named workspace and switch |
+| `alt + shift + S/W/B/D/Z/U/N/P/X` | Move window to named workspace and switch |
 
 ### Monitor Management
 
@@ -331,6 +332,8 @@ These apps are automatically routed to dedicated workspaces when they open:
 | Figma | `com.figma.Desktop` | **U** |
 | Neat Download Manager | `com.NeatDownloadManager` | **N** |
 | Brave Browser | `com.brave.Browser` | **P** |
+| Docker | `com.docker.docker` | **X** |
+| Wispr Flow | `com.electron.wispr-flow` | **X** |
 
 To find the bundle ID of any app:
 
@@ -445,7 +448,7 @@ Restores a previously saved layout from `monitor-layouts.conf`.
 ║  NAVIGATE          MOVE WINDOW        WORKSPACES             ║
 ║  alt+j  ← left     alt+shift+j ←     alt+1..9,0  #1-10     ║
 ║  alt+k  ↓ down     alt+shift+k ↓     alt+s/w/b/  named     ║
-║  alt+i  ↑ up       alt+shift+i ↑      d/z/u/n/p             ║
+║  alt+i  ↑ up       alt+shift+i ↑      d/z/u/n/p/x           ║
 ║  alt+l  → right    alt+shift+l →     alt+tab     toggle     ║
 ║                                                              ║
 ║  LAYOUT            WINDOW             MONITORS               ║
