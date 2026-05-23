@@ -5,22 +5,16 @@
 
 CONFIG_FILE=~/.config/aerospace/monitor-layouts.conf
 
-echo "# Monitor layouts saved on $(date)" > $CONFIG_FILE
+echo "# Monitor layouts saved on $(date)" > "$CONFIG_FILE"
 
-# Get all workspace-to-monitor assignments
-for workspace in 1 2 3 4 5 6 7 8 9 T S; do
-    monitor=$(aerospace get-workspace-monitor $workspace 2>/dev/null)
-    if [ ! -z "$monitor" ]; then
-        echo "aerospace move-workspace-to-monitor $workspace $monitor" >> $CONFIG_FILE
-    fi
-done
-
-# Save current layout for each workspace
-for workspace in 1 2 3 4 5 6 7 8 9 T S; do
-    layout=$(aerospace get-workspace-layout $workspace 2>/dev/null)
-    if [ ! -z "$layout" ]; then
-        echo "aerospace set-workspace-layout $workspace $layout" >> $CONFIG_FILE
-    fi
-done
+# Record each workspace's current monitor as a restore command.
+# Workspaces are enumerated dynamically from AeroSpace rather than hard-coded.
+# Note: AeroSpace exposes no command to query/set a workspace's *layout*
+# (tiles/accordion), so only workspace-to-monitor assignments are saved.
+aerospace list-workspaces --all --format '%{workspace}|%{monitor-name}' \
+    | while IFS='|' read -r workspace monitor; do
+        [ -z "$workspace" ] && continue
+        echo "aerospace move-workspace-to-monitor --workspace \"$workspace\" \"$monitor\"" >> "$CONFIG_FILE"
+    done
 
 echo "Monitor layout saved to $CONFIG_FILE"
