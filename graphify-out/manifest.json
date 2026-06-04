@@ -1,0 +1,32 @@
+{
+  "/Users/atharv/.config/aerospace/apply-monitor-layout.sh": {
+    "mtime": 1747639697.9493783,
+    "ast_hash": "eae679ea3dd029591b66e623073d65bb",
+    "semantic_hash": "eae679ea3dd029591b66e623073d65bb"
+  },
+  "/Users/atharv/.config/aerospace/monitor-setup.sh": {
+    "mtime": 1747642685.4051797,
+    "ast_hash": "0bba06ebdf08279e62a80a55efafa723",
+    "semantic_hash": "0bba06ebdf08279e62a80a55efafa723"
+  },
+  "/Users/atharv/.config/aerospace/save-monitor-layout.sh": {
+    "mtime": 1779567921.2573054,
+    "ast_hash": "74ef89df423af381e2c14eae855c8d30",
+    "semantic_hash": "74ef89df423af381e2c14eae855c8d30"
+  },
+  "/Users/atharv/.config/aerospace/.claude/settings.local.json": {
+    "mtime": 1780552622.2066557,
+    "ast_hash": "f72b14cb70562bc9e6faff5abfd25cf3",
+    "semantic_hash": "f72b14cb70562bc9e6faff5abfd25cf3"
+  },
+  "/Users/atharv/.config/aerospace/README.md": {
+    "mtime": 1780552608.526819,
+    "ast_hash": "794c4a6097c40aedace45cb3c7d835bd",
+    "semantic_hash": "794c4a6097c40aedace45cb3c7d835bd"
+  },
+  "/Users/atharv/.config/aerospace/CLAUDE.md": {
+    "mtime": 1779567758.7321775,
+    "ast_hash": "8f5372ac8baceeb208b8f6753b754815",
+    "semantic_hash": "8f5372ac8baceeb208b8f6753b754815"
+  }
+}

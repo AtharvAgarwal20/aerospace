@@ -1,0 +1,992 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "three_layer_consistency_layers",
+        "label": "Three Layers That Must Stay Consistent",
+        "nodes": [
+          "aerospace_claude_three_layer_consistency",
+          "aerospace_readme_doc",
+          "aerospace_monitor_setup_script",
+          "aerospace_aerospace_monitor_force_assignment"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "CLAUDE.md"
+      },
+      {
+        "id": "secondary_monitor_pinned_workspaces",
+        "label": "Workspaces Pinned to Secondary Monitor",
+        "nodes": [
+          "aerospace_aerospace_monitor_force_assignment",
+          "aerospace_aerospace_workspace_s",
+          "aerospace_aerospace_workspace_z"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "aerospace.toml"
+      },
+      {
+        "id": "workspace_n_routed_apps",
+        "label": "Apps Routed to Workspace N",
+        "nodes": [
+          "aerospace_aerospace_workspace_n",
+          "aerospace_aerospace_rule_neat",
+          "aerospace_aerospace_rule_docker",
+          "aerospace_aerospace_rule_wispr"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "aerospace.toml"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "apply-monitor-layout.sh",
+      "file_type": "code",
+      "source_file": "apply-monitor-layout.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "apply_monitor_layout_sh",
+      "community": 8,
+      "norm_label": "apply-monitor-layout.sh"
+    },
+    {
+      "label": "apply-monitor-layout.sh script",
+      "file_type": "code",
+      "source_file": "apply-monitor-layout.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "users_atharv_config_aerospace_apply_monitor_layout_sh__entry",
+      "community": 8,
+      "norm_label": "apply-monitor-layout.sh script"
+    },
+    {
+      "label": "monitor-setup.sh",
+      "file_type": "code",
+      "source_file": "monitor-setup.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "monitor_setup_sh",
+      "community": 9,
+      "norm_label": "monitor-setup.sh"
+    },
+    {
+      "label": "monitor-setup.sh script",
+      "file_type": "code",
+      "source_file": "monitor-setup.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "users_atharv_config_aerospace_monitor_setup_sh__entry",
+      "community": 9,
+      "norm_label": "monitor-setup.sh script"
+    },
+    {
+      "label": "save-monitor-layout.sh",
+      "file_type": "code",
+      "source_file": "save-monitor-layout.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "save_monitor_layout_sh",
+      "community": 10,
+      "norm_label": "save-monitor-layout.sh"
+    },
+    {
+      "label": "save-monitor-layout.sh script",
+      "file_type": "code",
+      "source_file": "save-monitor-layout.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "users_atharv_config_aerospace_save_monitor_layout_sh__entry",
+      "community": 10,
+      "norm_label": "save-monitor-layout.sh script"
+    },
+    {
+      "label": "settings.local.json",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L1",
+      "id": "claude_settings_local_json",
+      "community": 4,
+      "norm_label": "settings.local.json"
+    },
+    {
+      "label": "permissions",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L2",
+      "id": "claude_settings_local_permissions",
+      "community": 4,
+      "norm_label": "permissions"
+    },
+    {
+      "label": "allow",
+      "file_type": "code",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L3",
+      "id": "claude_settings_local_permissions_allow",
+      "community": 4,
+      "norm_label": "allow"
+    },
+    {
+      "label": "Main Binding Mode",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "mode.main.binding",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_mode_main",
+      "community": 1,
+      "norm_label": "main binding mode"
+    },
+    {
+      "label": "Resize Binding Mode",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "mode.resize.binding",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_mode_resize",
+      "community": 1,
+      "norm_label": "resize binding mode"
+    },
+    {
+      "label": "Service Binding Mode",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "mode.service.binding",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_mode_service",
+      "community": 1,
+      "norm_label": "service binding mode"
+    },
+    {
+      "label": "j/k/i/l Directional Navigation Scheme",
+      "file_type": "rationale",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_jkil_navigation",
+      "community": 1,
+      "norm_label": "j/k/i/l directional navigation scheme"
+    },
+    {
+      "label": "Workspace S (Spotify)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_workspace_s",
+      "community": 0,
+      "norm_label": "workspace s (spotify)"
+    },
+    {
+      "label": "Workspace W (WhatsApp)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_workspace_w",
+      "community": 6,
+      "norm_label": "workspace w (whatsapp)"
+    },
+    {
+      "label": "Workspace Z (Zoom)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_workspace_z",
+      "community": 0,
+      "norm_label": "workspace z (zoom)"
+    },
+    {
+      "label": "Workspace D (Discord)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_workspace_d",
+      "community": 7,
+      "norm_label": "workspace d (discord)"
+    },
+    {
+      "label": "Workspace U (Figma)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_workspace_u",
+      "community": 2,
+      "norm_label": "workspace u (figma)"
+    },
+    {
+      "label": "Workspace N (Neat/Docker/Wispr)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_workspace_n",
+      "community": 2,
+      "norm_label": "workspace n (neat/docker/wispr)"
+    },
+    {
+      "label": "Workspace P (Brave Browser)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_workspace_p",
+      "community": 5,
+      "norm_label": "workspace p (brave browser)"
+    },
+    {
+      "label": "Auto-Assign Spotify Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected com.spotify.client",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_spotify",
+      "community": 0,
+      "norm_label": "auto-assign spotify rule"
+    },
+    {
+      "label": "Auto-Assign WhatsApp Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected net.whatsapp.WhatsApp",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_whatsapp",
+      "community": 6,
+      "norm_label": "auto-assign whatsapp rule"
+    },
+    {
+      "label": "Auto-Assign Zoom Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected us.zoom.xos",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_zoom",
+      "community": 0,
+      "norm_label": "auto-assign zoom rule"
+    },
+    {
+      "label": "Auto-Assign Discord Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected com.hnc.Discord",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_discord",
+      "community": 7,
+      "norm_label": "auto-assign discord rule"
+    },
+    {
+      "label": "Auto-Assign Figma Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected com.figma.Desktop",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_figma",
+      "community": 2,
+      "norm_label": "auto-assign figma rule"
+    },
+    {
+      "label": "Auto-Assign Neat Download Manager Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected com.NeatDownloadManager",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_neat",
+      "community": 2,
+      "norm_label": "auto-assign neat download manager rule"
+    },
+    {
+      "label": "Auto-Assign Brave Browser Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected com.brave.Browser",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_brave",
+      "community": 5,
+      "norm_label": "auto-assign brave browser rule"
+    },
+    {
+      "label": "Auto-Assign Docker Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected com.docker.docker",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_docker",
+      "community": 2,
+      "norm_label": "auto-assign docker rule"
+    },
+    {
+      "label": "Auto-Assign Wispr Flow Rule",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "on-window-detected com.electron.wispr-flow",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_rule_wispr",
+      "community": 2,
+      "norm_label": "auto-assign wispr flow rule"
+    },
+    {
+      "label": "Workspace-to-Monitor Force Assignment (secondary pinning)",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "workspace-to-monitor-force-assignment",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_monitor_force_assignment",
+      "community": 0,
+      "norm_label": "workspace-to-monitor force assignment (secondary pinning)"
+    },
+    {
+      "label": "Service Mode Esc Reload-Config",
+      "file_type": "concept",
+      "source_file": "aerospace.toml",
+      "source_location": "mode.service.binding esc",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_service_reload",
+      "community": 1,
+      "norm_label": "service mode esc reload-config"
+    },
+    {
+      "label": "alt+shift+jkil Move/Join Overload",
+      "file_type": "rationale",
+      "source_file": "aerospace.toml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_join_overload",
+      "community": 1,
+      "norm_label": "alt+shift+jkil move/join overload"
+    },
+    {
+      "label": "monitor-setup.sh",
+      "file_type": "code",
+      "source_file": "monitor-setup.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_monitor_setup_script",
+      "community": 0,
+      "norm_label": "monitor-setup.sh"
+    },
+    {
+      "label": "save-monitor-layout.sh",
+      "file_type": "code",
+      "source_file": "save-monitor-layout.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_save_monitor_layout_script",
+      "community": 3,
+      "norm_label": "save-monitor-layout.sh"
+    },
+    {
+      "label": "apply-monitor-layout.sh",
+      "file_type": "code",
+      "source_file": "apply-monitor-layout.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_apply_monitor_layout_script",
+      "community": 3,
+      "norm_label": "apply-monitor-layout.sh"
+    },
+    {
+      "label": "monitor-layouts.conf (runtime layout snapshot)",
+      "file_type": "concept",
+      "source_file": "save-monitor-layout.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_aerospace_monitor_layouts_conf",
+      "community": 3,
+      "norm_label": "monitor-layouts.conf (runtime layout snapshot)"
+    },
+    {
+      "label": "README.md (human-facing documentation)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_readme_doc",
+      "community": 1,
+      "norm_label": "readme.md (human-facing documentation)"
+    },
+    {
+      "label": "Three-Layer Consistency Constraint",
+      "file_type": "rationale",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_claude_three_layer_consistency",
+      "community": 0,
+      "norm_label": "three-layer consistency constraint"
+    },
+    {
+      "label": "Known Monitor-Script Inconsistencies",
+      "file_type": "rationale",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerospace_claude_known_inconsistencies",
+      "community": 0,
+      "norm_label": "known monitor-script inconsistencies"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apply-monitor-layout.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "apply_monitor_layout_sh",
+      "target": "users_atharv_config_aerospace_apply_monitor_layout_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "monitor-setup.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "monitor_setup_sh",
+      "target": "users_atharv_config_aerospace_monitor_setup_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "save-monitor-layout.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "save_monitor_layout_sh",
+      "target": "users_atharv_config_aerospace_save_monitor_layout_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "claude_settings_local_json",
+      "target": "claude_settings_local_permissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.local.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_settings_local_permissions",
+      "target": "claude_settings_local_permissions_allow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "enter/esc = 'mode main'",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_mode_resize",
+      "target": "aerospace_aerospace_mode_main"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "alt-shift-semicolon = 'mode service'",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_mode_main",
+      "target": "aerospace_aerospace_mode_service"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "alt-j/k/i/l focus",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_mode_main",
+      "target": "aerospace_aerospace_jkil_navigation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Main Mode section",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_aerospace_mode_main"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Resize Mode section",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_aerospace_mode_resize"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "mode.service.binding esc",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_service_reload",
+      "target": "aerospace_aerospace_mode_service"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "mode.service.binding alt-shift-jkil join-with",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_join_overload",
+      "target": "aerospace_aerospace_mode_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Service Mode section",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_aerospace_mode_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Focus mnemonic J-K-I-L",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_aerospace_jkil_navigation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace S",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_spotify",
+      "target": "aerospace_aerospace_workspace_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "S = secondary",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_monitor_force_assignment",
+      "target": "aerospace_aerospace_workspace_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "monitor-setup.sh",
+      "source_location": "move-workspace-to-monitor S main",
+      "weight": 1.0,
+      "source": "aerospace_monitor_setup_script",
+      "target": "aerospace_aerospace_workspace_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace W",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_whatsapp",
+      "target": "aerospace_aerospace_workspace_w"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace Z",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_zoom",
+      "target": "aerospace_aerospace_workspace_z"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "Z = secondary",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_monitor_force_assignment",
+      "target": "aerospace_aerospace_workspace_z"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace D",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_discord",
+      "target": "aerospace_aerospace_workspace_d"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace U",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_figma",
+      "target": "aerospace_aerospace_workspace_u"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "aerospace.toml",
+      "source_location": "both are named single-app workspaces with non-mnemonic letter (N/U) routing differently-named apps",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_workspace_n",
+      "target": "aerospace_aerospace_workspace_u"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace N",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_neat",
+      "target": "aerospace_aerospace_workspace_n"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace N",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_docker",
+      "target": "aerospace_aerospace_workspace_n"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace N",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_wispr",
+      "target": "aerospace_aerospace_workspace_n"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml",
+      "source_location": "run move-node-to-workspace P",
+      "weight": 1.0,
+      "source": "aerospace_aerospace_rule_brave",
+      "target": "aerospace_aerospace_workspace_p"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "CLAUDE.md",
+      "source_location": "script overrides static assignment at runtime",
+      "weight": 1.0,
+      "source": "aerospace_monitor_setup_script",
+      "target": "aerospace_aerospace_monitor_force_assignment"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Monitor Assignments section",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_aerospace_monitor_force_assignment"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "conflicts with static assignment, whichever runs last wins",
+      "weight": 1.0,
+      "source": "aerospace_claude_known_inconsistencies",
+      "target": "aerospace_aerospace_monitor_force_assignment"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Helper Scripts section",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_monitor_setup_script"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "monitor scripts are layer 2",
+      "weight": 1.0,
+      "source": "aerospace_claude_three_layer_consistency",
+      "target": "aerospace_monitor_setup_script"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "hard-codes 1-5 external, conflicts with force-assignment",
+      "weight": 1.0,
+      "source": "aerospace_claude_known_inconsistencies",
+      "target": "aerospace_monitor_setup_script"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "save-monitor-layout.sh",
+      "source_location": "CONFIG_FILE writes restore commands",
+      "weight": 1.0,
+      "source": "aerospace_save_monitor_layout_script",
+      "target": "aerospace_aerospace_monitor_layouts_conf"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "apply-monitor-layout.sh",
+      "source_location": "both operate on monitor-layouts.conf",
+      "weight": 1.0,
+      "source": "aerospace_apply_monitor_layout_script",
+      "target": "aerospace_save_monitor_layout_script"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Helper Scripts section",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_save_monitor_layout_script"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "iterates 1..9 T S, named workspaces omitted",
+      "weight": 1.0,
+      "source": "aerospace_claude_known_inconsistencies",
+      "target": "aerospace_save_monitor_layout_script"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apply-monitor-layout.sh",
+      "source_location": "source $CONFIG_FILE",
+      "weight": 1.0,
+      "source": "aerospace_apply_monitor_layout_script",
+      "target": "aerospace_aerospace_monitor_layouts_conf"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "Helper Scripts section",
+      "weight": 1.0,
+      "source": "aerospace_readme_doc",
+      "target": "aerospace_apply_monitor_layout_script"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "README.md is layer 3",
+      "weight": 1.0,
+      "source": "aerospace_claude_three_layer_consistency",
+      "target": "aerospace_readme_doc"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "three_layer_consistency_layers",
+      "label": "Three Layers That Must Stay Consistent",
+      "nodes": [
+        "aerospace_claude_three_layer_consistency",
+        "aerospace_readme_doc",
+        "aerospace_monitor_setup_script",
+        "aerospace_aerospace_monitor_force_assignment"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md"
+    },
+    {
+      "id": "secondary_monitor_pinned_workspaces",
+      "label": "Workspaces Pinned to Secondary Monitor",
+      "nodes": [
+        "aerospace_aerospace_monitor_force_assignment",
+        "aerospace_aerospace_workspace_s",
+        "aerospace_aerospace_workspace_z"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml"
+    },
+    {
+      "id": "workspace_n_routed_apps",
+      "label": "Apps Routed to Workspace N",
+      "nodes": [
+        "aerospace_aerospace_workspace_n",
+        "aerospace_aerospace_rule_neat",
+        "aerospace_aerospace_rule_docker",
+        "aerospace_aerospace_rule_wispr"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "aerospace.toml"
+    }
+  ],
+  "built_at_commit": "8ef17ea811e0f5f7b53d59938e59ebba308d63c8"
+}
