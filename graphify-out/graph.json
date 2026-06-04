@@ -390,7 +390,7 @@
       "label": "Auto-Assign Docker Rule",
       "file_type": "concept",
       "source_file": "aerospace.toml",
-      "source_location": "on-window-detected com.docker.docker",
+      "source_location": "on-window-detected com.electron.dockerdesktop",
       "source_url": null,
       "captured_at": null,
       "author": null,
