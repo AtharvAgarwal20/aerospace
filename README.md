@@ -330,7 +330,7 @@ These apps are automatically routed to dedicated workspaces when they open:
 | Figma | `com.figma.Desktop` | **U** |
 | Neat Download Manager | `com.NeatDownloadManager` | **N** |
 | Brave Browser | `com.brave.Browser` | **P** |
-| Docker | `com.docker.docker` | **N** |
+| Docker | `com.electron.dockerdesktop` | **N** |
 | Wispr Flow | `com.electron.wispr-flow` | **N** |
 
 To find the bundle ID of any app:

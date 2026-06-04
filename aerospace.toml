@@ -213,7 +213,7 @@ if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace P"
 
 [[on-window-detected]]
-if.app-id = 'com.docker.docker'
+if.app-id = 'com.electron.dockerdesktop'
 run = "move-node-to-workspace N"
 
 [[on-window-detected]]
