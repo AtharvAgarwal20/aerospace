@@ -33,6 +33,7 @@
 - [Auto-Assignment Rules](#auto-assignment-rules)
 - [Monitor Assignments](#monitor-assignments)
 - [Helper Scripts](#helper-scripts)
+  - [focus-workspace.sh](#focus-workspacesh)
   - [monitor-setup.sh](#monitor-setupsh)
   - [save-monitor-layout.sh](#save-monitor-layoutsh)
   - [apply-monitor-layout.sh](#apply-monitor-layoutsh)
@@ -78,6 +79,7 @@ ln -s ~/dotfiles/aerospace ~/.config/aerospace
 The helper scripts need execute permissions:
 
 ```bash
+chmod +x ~/.config/aerospace/focus-workspace.sh
 chmod +x ~/.config/aerospace/monitor-setup.sh
 chmod +x ~/.config/aerospace/save-monitor-layout.sh
 chmod +x ~/.config/aerospace/apply-monitor-layout.sh
@@ -98,6 +100,15 @@ The config has `start-at-login = true`, so after the first launch AeroSpace will
 > **System Settings → Privacy & Security → Accessibility**  
 > for it to manage your windows.
 
+> [!NOTE]
+> **Multi-monitor focus quirk.** Switching to a workspace whose app has another window of the
+> *same app* on another monitor can focus the wrong window — a macOS Accessibility limitation
+> (AeroSpace "is not the focus owner"). The `alt + <workspace>` keys are routed through
+> [`focus-workspace.sh`](#focus-workspacesh) as a best-effort workaround. The only fully reliable
+> fix is disabling macOS "Displays have separate Spaces" (`defaults write com.apple.spaces
+> spans-displays -bool true`, then log out), but that makes macOS **native** fullscreen blank the
+> other monitor — so it's left as an opt-in choice, not the default.
+
 ---
 
 ## Repository Structure
@@ -105,6 +116,7 @@ The config has `start-at-login = true`, so after the first launch AeroSpace will
 ```
 ~/.config/aerospace/
 ├── aerospace.toml              # Main AeroSpace configuration
+├── focus-workspace.sh          # Best-effort fix for cross-monitor same-app focus
 ├── monitor-setup.sh            # Auto-detects monitor count and distributes workspaces
 ├── save-monitor-layout.sh      # Saves current workspace-to-monitor assignments
 ├── apply-monitor-layout.sh     # Restores a previously saved monitor layout
@@ -358,6 +370,20 @@ All other workspaces default to the primary monitor. Use `alt + shift + Tab` to 
 ---
 
 ## Helper Scripts
+
+### `focus-workspace.sh`
+
+Best-effort workaround for the macOS bug where switching to a workspace focuses the *wrong* window
+of the same app on another monitor (macOS focuses the most-recently-used instance; AeroSpace isn't
+the focus owner). Every `alt + <workspace>` key routes through it. Instead of a bare workspace
+switch — the command that makes macOS grab the wrong window — it focuses the *exact* window that
+lives on the target workspace (which also switches to it), retrying briefly to beat the race, then
+repairs the monitor you left if it still got flipped. Empty workspaces fall back to a plain switch.
+
+> [!NOTE]
+> **Best-effort** — the macOS focus race can still occasionally win, and the retries add slight
+> latency on cross-monitor switches. The only fully reliable fix is disabling "Displays have
+> separate Spaces" (see the macOS note under [Start AeroSpace](#4-start-aerospace)).
 
 ### `monitor-setup.sh`
 
