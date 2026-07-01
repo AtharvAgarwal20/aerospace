@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⚠️ Read `FIXES.md` FIRST — every session, before any edit
+
+[`FIXES.md`](./FIXES.md) is the regression guard: a registry of behaviors that were
+deliberately fixed and keep getting broken by later changes. **Open it and run its
+preflight checklist before editing `aerospace.toml`, any `*.sh`, or `README.md`.** In
+this repo, fixes step on each other (e.g. the workspace-focus fix vs. the accordion-top
+fix — see invariant A); do not "simplify" or refactor code without checking which
+invariant it protects. After a change, run the affected invariant's **Verify** step.
+
 ## What this is
 
 A personal [AeroSpace](https://nikitabobko.github.io/AeroSpace/) (i3-inspired tiling WM for macOS) configuration. There is no build/test/lint step — `aerospace.toml` is declarative TOML and the `.sh` files are plain bash. "Running" means reloading the config or invoking the `aerospace` CLI.

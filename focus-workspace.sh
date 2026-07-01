@@ -14,8 +14,16 @@ set -uo pipefail
 
 target="${1:?usage: focus-workspace.sh <workspace>}"
 
-# A window that actually lives on the target workspace (queried without switching).
-target_wid="$(aerospace list-windows --workspace "$target" --format '%{window-id}' 2>/dev/null | head -n1 || true)"
+# Windows that actually live on the target workspace (queried without switching).
+target_wids="$(aerospace list-windows --workspace "$target" --format '%{window-id}' 2>/dev/null || true)"
+
+# Which one to focus: prefer the window we last left focused on this workspace
+# (so the accordion top you left stays on top), falling back to the first window
+# if that record is missing or the window is gone. See the record step below.
+target_wid="$(cat "/tmp/aerospace-last-focus-$target" 2>/dev/null || true)"
+if [ -z "$target_wid" ] || ! grep -qxF "$target_wid" <<<"$target_wids"; then
+  target_wid="$(head -n1 <<<"$target_wids")"
+fi
 
 # Empty target workspace: nothing to mis-focus — plain switch and exit.
 if [ -z "$target_wid" ]; then exec aerospace workspace "$target"; fi
@@ -25,10 +33,18 @@ from_wid=''; from_ws=''; from_mon=''
 IFS='|' read -r from_wid from_ws from_mon \
   < <(aerospace list-windows --focused --format '%{window-id}|%{workspace}|%{monitor-id}' 2>/dev/null || true)
 
+# Remember the window we're leaving on its workspace, so next time we return here
+# we restore it instead of always snapping to the first window. Read above.
+[ -n "$from_ws" ] && [ -n "$from_wid" ] && \
+  printf '%s' "$from_wid" > "/tmp/aerospace-last-focus-$from_ws" 2>/dev/null || true
+
 # Already on the target window? nothing to do.
 [ "$from_wid" = "$target_wid" ] && exit 0
 
 # Focus the exact target window, retrying until it sticks (beats the MRU race).
+# ponytail: best-effort — restoring the last-focused window (above) can re-expose the
+# #101 same-app grab; more retries here just add latency without winning. The reliable
+# fix is disabling macOS "Displays have separate Spaces" (README / FIXES.md invariant A).
 cur=''; to_mon=''
 for _ in 1 2 3 4 5 6; do
   aerospace focus --window-id "$target_wid" 2>/dev/null || true

@@ -376,9 +376,14 @@ All other workspaces default to the primary monitor. Use `alt + shift + Tab` to 
 Best-effort workaround for the macOS bug where switching to a workspace focuses the *wrong* window
 of the same app on another monitor (macOS focuses the most-recently-used instance; AeroSpace isn't
 the focus owner). Every `alt + <workspace>` key routes through it. Instead of a bare workspace
-switch — the command that makes macOS grab the wrong window — it focuses the *exact* window that
+switch — the command that makes macOS grab the wrong window — it focuses an *exact* window that
 lives on the target workspace (which also switches to it), retrying briefly to beat the race, then
 repairs the monitor you left if it still got flipped. Empty workspaces fall back to a plain switch.
+
+It restores the window you *last left focused* on that workspace (recorded to `/tmp/aerospace-last-focus-<ws>`
+each time you switch away), so in accordion mode the window you left on top stays on top instead of
+always snapping to the first window. Leaving via mouse click / `alt+tab` / `alt+shift+←→` isn't
+recorded, so those fall back to the last `alt+<ws>` value or the first window.
 
 > [!NOTE]
 > **Best-effort** — the macOS focus race can still occasionally win, and the retries add slight
