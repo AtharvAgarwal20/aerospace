@@ -230,3 +230,8 @@ Z = "secondary"
 8 = "secondary"
 9 = "secondary"
 10 = "secondary"
+
+# qBittorrent -> downloads workspace (N)
+[[on-window-detected]]
+if.app-id = 'org.qbittorrent.qBittorrent'
+run = "move-node-to-workspace N"
