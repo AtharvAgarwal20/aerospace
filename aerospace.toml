@@ -244,3 +244,11 @@ Z = "secondary"
 if.app-id = 'org.qbittorrent.qBittorrent'
 run = "move-node-to-workspace N"
 
+# OWASP ZAP (Java Swing) -> float it so AeroSpace stops tiling its dialogs.
+# ZAP.app is just a shell script that exec's the Homebrew OpenJDK, so macOS
+# reports the JVM's own bundle id (net.java.openjdk.java), NOT org.zaproxy.zap.ZAP.
+# This therefore floats every app launched via that JDK (all Java Swing UIs have
+# the same AX/tiling problems, so that is what you want anyway).
+[[on-window-detected]]
+if.app-id = 'net.java.openjdk.java'
+run = "layout floating"
