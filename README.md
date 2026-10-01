@@ -246,6 +246,7 @@ The config defines **three modes**. You always start in `main`.
 | `alt + U` | **U** | Figma |
 | `alt + N` | **N** | Neat Download Manager / Docker / Wispr Flow |
 | `alt + P` | **P** | Brave Browser |
+| `alt + E` | **E** | Thorium Reader |
 
 #### Quick Switching
 
@@ -263,7 +264,7 @@ Add **shift** to the workspace keybind — the window moves and you follow it:
 |---|---|
 | `alt + shift + 1` … `alt + shift + 9` | Move window to workspace **1–9** and switch |
 | `alt + shift + 0` | Move window to workspace **10** and switch |
-| `alt + shift + S/W/D/Z/U/N/P` | Move window to named workspace and switch |
+| `alt + shift + S/W/D/Z/U/N/P/E` | Move window to named workspace and switch |
 
 ### Monitor Management
 
@@ -342,6 +343,7 @@ These apps are automatically routed to dedicated workspaces when they open:
 | Figma | `com.figma.Desktop` | **U** |
 | Neat Download Manager | `com.NeatDownloadManager` | **N** |
 | Brave Browser | `com.brave.Browser` | **P** |
+| Thorium Reader | `io.github.edrlab.thorium` | **E** |
 | Docker | `com.electron.dockerdesktop` | **N** |
 | Wispr Flow | `com.electron.wispr-flow` | **N** |
 
@@ -477,7 +479,7 @@ Restores a previously saved layout from `monitor-layouts.conf`.
 ║  NAVIGATE          MOVE WINDOW        WORKSPACES             ║
 ║  alt+j  ← left     alt+shift+j ←     alt+1..9,0  #1-10     ║
 ║  alt+k  ↓ down     alt+shift+k ↓     alt+s/w/d/  named     ║
-║  alt+i  ↑ up       alt+shift+i ↑      z/u/n/p               ║
+║  alt+i  ↑ up       alt+shift+i ↑      z/u/n/p/e             ║
 ║  alt+l  → right    alt+shift+l →     alt+tab     toggle     ║
 ║                                                              ║
 ║  LAYOUT            WINDOW             MONITORS               ║
