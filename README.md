@@ -34,7 +34,6 @@
 - [Monitor Assignments](#monitor-assignments)
 - [Helper Scripts](#helper-scripts)
   - [focus-workspace.sh](#focus-workspacesh)
-  - [monitor-setup.sh](#monitor-setupsh)
   - [save-monitor-layout.sh](#save-monitor-layoutsh)
   - [apply-monitor-layout.sh](#apply-monitor-layoutsh)
 - [Common Workflows](#common-workflows)
@@ -80,7 +79,6 @@ The helper scripts need execute permissions:
 
 ```bash
 chmod +x ~/.config/aerospace/focus-workspace.sh
-chmod +x ~/.config/aerospace/monitor-setup.sh
 chmod +x ~/.config/aerospace/save-monitor-layout.sh
 chmod +x ~/.config/aerospace/apply-monitor-layout.sh
 ```
@@ -117,7 +115,6 @@ The config has `start-at-login = true`, so after the first launch AeroSpace will
 ~/.config/aerospace/
 ├── aerospace.toml              # Main AeroSpace configuration
 ├── focus-workspace.sh          # Best-effort fix for cross-monitor same-app focus
-├── monitor-setup.sh            # Auto-detects monitor count and distributes workspaces
 ├── save-monitor-layout.sh      # Saves current workspace-to-monitor assignments
 ├── apply-monitor-layout.sh     # Restores a previously saved monitor layout
 └── README.md                   # This guide
@@ -382,41 +379,19 @@ switch — the command that makes macOS grab the wrong window — it focuses an 
 lives on the target workspace (which also switches to it), retrying briefly to beat the race, then
 repairs the monitor you left if it still got flipped. Empty workspaces fall back to a plain switch.
 
-It restores the window you *last left focused* on that workspace (recorded to `/tmp/aerospace-last-focus-<ws>`
-each time you switch away), so in accordion mode the window you left on top stays on top instead of
-always snapping to the first window. Leaving via mouse click / `alt+tab` / `alt+shift+←→` isn't
-recorded, so those fall back to the last `alt+<ws>` value or the first window.
+It restores the window you were *last on* in that workspace, instead of always snapping to the first
+tile. An `on-focus-changed` hook in `aerospace.toml` records the focused window to
+`/tmp/aerospace-last-focus-<ws>` on every focus change, so this works however you left (mouse click,
+`alt+tab`, `alt+shift+←→`, `alt+shift+<ws>`). Falls back to the first window only if unknown or gone.
 
 > [!NOTE]
 > **Best-effort** — the macOS focus race can still occasionally win, and the retries add slight
 > latency on cross-monitor switches. The only fully reliable fix is disabling "Displays have
 > separate Spaces" (see the macOS note under [Start AeroSpace](#4-start-aerospace)).
 
-### `monitor-setup.sh`
-
-Automatically detects how many monitors are connected and distributes workspaces accordingly.
-
-| Monitors Detected | Behaviour |
-|---|---|
-| **1** (laptop only) | All workspaces assigned to the single display |
-| **2** (dual setup) | Workspaces 1–5 → external monitor; 6–10 + S → main; focuses WS 6 on main |
-| **3+** (multi) | Same as dual — uses main + one external |
-
-**Run manually:**
-
-```bash
-~/.config/aerospace/monitor-setup.sh
-```
-
-**Check logs:**
-
-```bash
-cat /tmp/aerospace-monitor-setup.log
-```
-
 ### `save-monitor-layout.sh`
 
-Snapshots the current workspace-to-monitor mapping and per-workspace layouts to `~/.config/aerospace/monitor-layouts.conf`.
+Snapshots the current workspace-to-monitor mapping (not tiles/accordion layouts — AeroSpace has no command for that) to `~/.config/aerospace/monitor-layouts.conf`.
 
 ```bash
 ~/.config/aerospace/save-monitor-layout.sh
@@ -520,7 +495,7 @@ Restores a previously saved layout from `monitor-layouts.conf`.
 - **Add startup commands** — populate `after-startup-command` to run commands on launch:
   ```toml
   after-startup-command = [
-      'exec-and-forget ~/.config/aerospace/monitor-setup.sh'
+      'exec-and-forget ~/.config/aerospace/apply-monitor-layout.sh'
   ]
   ```
 

@@ -34,9 +34,13 @@ instead `aerospace focus --window-id <exact-wid>`, retried until it sticks.
 
 **A2 — Accordion top is preserved.** `alt-<n>` must restore the window you *last left
 focused* on that workspace (so in accordion mode the one you left on top stays on top),
-NOT a fixed "first" window. Mechanism: on switch-away the script records the focused
-window to `/tmp/aerospace-last-focus-<ws>`; on return it focuses that (validated it's
-still there), falling back to the first window only if unknown/gone.
+NOT a fixed "first" window. Mechanism: the `on-focus-changed` hook in `aerospace.toml`
+records the focused window to `/tmp/aerospace-last-focus-<ws>` on EVERY focus change (so
+leaving via mouse / `alt-tab` / `alt-shift-<n>` is covered — recording only inside the
+script left stale records and you landed on the first tile). The script also writes the
+record for the window it's leaving, and MUST do so before reading the target record —
+otherwise pressing the current workspace's key jumps to a stale tile. On return it
+focuses the record (validated it's still there), else the first window.
 
 **The trap (this literally happened):** A2 was originally implemented as `head -n1`
 (always focus the first window). That accidentally satisfied A1 too — the first window
@@ -57,7 +61,7 @@ Tradeoffs of disabling: menu bar only on main monitor; per-monitor fullscreen br
 (the other monitor goes black while one is fullscreen). Windows can then span monitors.
 
 **Do NOT** "simplify" `focus-workspace.sh` back to a bare `workspace` switch (breaks A1),
-and do NOT drop the recording / go back to `head -n1` (breaks A2).
+and do NOT drop the recording (hook or script) / go back to `head -n1` (breaks A2).
 
 **Verify (both, without a second monitor):**
 ```bash
@@ -79,8 +83,9 @@ window (not the twin) ends up focused.
 ## B. `alt-<n>` routing integrity
 
 Every `alt-<workspace>` binding must route through `focus-workspace.sh` (see A), for
-BOTH numbered (`1`–`10`) and named (`S W D Z U N P`) workspaces. `alt-shift-<n>` is the
-*move-node-to-workspace* path and is separate — don't collapse the two.
+BOTH numbered (`1`–`10`) and named (`S W D Z U N P E`) workspaces. `alt-shift-<n>` is the
+*move-node-to-workspace* path and is separate — don't collapse the two. It uses
+`--focus-follows-window` so the moved window (not the target's last tile) gets focus.
 Named workspaces still obey the "three places must agree" rule (binding +
 `[[on-window-detected]]` + optional `[workspace-to-monitor-force-assignment]`).
 
@@ -122,8 +127,6 @@ of `README.md` and confirm it says the same thing.
 ## E. Monitor pinning: static vs. imperative (known conflict)
 
 Static `[workspace-to-monitor-force-assignment]` in the TOML (pins `S Z 8 9 10` →
-`secondary`) and the imperative `monitor-setup.sh` ("1–5 → external, 6–10 + S → main")
-disagree. Whichever runs last wins. `save-monitor-layout.sh` also iterates a stale
-workspace list (`1..9 T S` — `T` doesn't exist; named workspaces omitted) and calls CLI
-subcommands that may not match the installed AeroSpace. Treat these scripts as suspect;
-don't wire them into `after-startup-command` without re-checking against the current CLI.
+`secondary`) is the source of truth. `monitor-setup.sh` was deleted: it called a
+non-existent `set-monitor-label` command and contradicted these pins. Running
+`apply-monitor-layout.sh` overrides the pins until the next reload — whichever runs last wins.

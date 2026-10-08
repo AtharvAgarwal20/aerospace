@@ -17,9 +17,20 @@ target="${1:?usage: focus-workspace.sh <workspace>}"
 # Windows that actually live on the target workspace (queried without switching).
 target_wids="$(aerospace list-windows --workspace "$target" --format '%{window-id}' 2>/dev/null || true)"
 
-# Which one to focus: prefer the window we last left focused on this workspace
-# (so the accordion top you left stays on top), falling back to the first window
-# if that record is missing or the window is gone. See the record step below.
+# Snapshot the window / workspace / monitor we're leaving, in one call.
+from_wid=''; from_ws=''; from_mon=''
+IFS='|' read -r from_wid from_ws from_mon \
+  < <(aerospace list-windows --focused --format '%{window-id}|%{workspace}|%{monitor-id}' 2>/dev/null || true)
+
+# Remember the window we're leaving. The on-focus-changed hook in aerospace.toml
+# already records every focus change (mouse, alt-tab, alt-shift-<n>, …); this is a
+# belt-and-braces write. It MUST happen before the read below, so pressing the key
+# of the workspace you're already on keeps the current tile instead of jumping.
+[ -n "$from_ws" ] && [ -n "$from_wid" ] && \
+  printf '%s' "$from_wid" > "/tmp/aerospace-last-focus-$from_ws" 2>/dev/null || true
+
+# Which one to focus: the window last focused on this workspace (so you land on
+# the tile you left), falling back to the first window if unknown or gone.
 target_wid="$(cat "/tmp/aerospace-last-focus-$target" 2>/dev/null || true)"
 if [ -z "$target_wid" ] || ! grep -qxF "$target_wid" <<<"$target_wids"; then
   target_wid="$(head -n1 <<<"$target_wids")"
@@ -27,16 +38,6 @@ fi
 
 # Empty target workspace: nothing to mis-focus — plain switch and exit.
 if [ -z "$target_wid" ]; then exec aerospace workspace "$target"; fi
-
-# Snapshot the window / workspace / monitor we're leaving, in one call.
-from_wid=''; from_ws=''; from_mon=''
-IFS='|' read -r from_wid from_ws from_mon \
-  < <(aerospace list-windows --focused --format '%{window-id}|%{workspace}|%{monitor-id}' 2>/dev/null || true)
-
-# Remember the window we're leaving on its workspace, so next time we return here
-# we restore it instead of always snapping to the first window. Read above.
-[ -n "$from_ws" ] && [ -n "$from_wid" ] && \
-  printf '%s' "$from_wid" > "/tmp/aerospace-last-focus-$from_ws" 2>/dev/null || true
 
 # Already on the target window? nothing to do.
 [ "$from_wid" = "$target_wid" ] && exit 0
